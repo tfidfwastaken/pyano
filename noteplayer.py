@@ -12,9 +12,15 @@ def play_notes(notes):
             play_ob = wav_ob.play()
             play_ob.wait_done()
 
-def main():
-    notes = input("Enter note sequence: ")
-    play_notes(notes)
+def main(arg):
+    if arg==1:
+        filename = input("Enter Filename: ")
+        with open(filename):
+            notes=filename.read()
+            play_notes(notes)
+    else:
+        notes = input("Enter note sequence: ")
+        play_notes(notes)
 
 if __name__ == '__main__':
-    main()
+    main(1)
