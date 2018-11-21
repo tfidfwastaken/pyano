@@ -8,7 +8,7 @@ def cleanerrors(text):
     text = re.sub(r'(?<=[a-g]s).', ' ', text)
     text = re.sub(r'\bs*', ' ', text)
     text = re.sub(r'[be]s', ' ', text)
-    if orig != text:
+    if orig.split() != text.split():
         print("Your note file had errors. pyanosense tried fixing it, but the notes might not sound like what you intend.")
     return text
 
