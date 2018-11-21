@@ -1,8 +1,10 @@
 # Plays dem notes
 import simpleaudio as sa
 import time
+from noteutils import cleanerrors
 
 def play_notes(notes):
+    notes = cleanerrors(notes)
     note_list = notes.split()
     for note in note_list:
         if note == '..':

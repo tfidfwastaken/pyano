@@ -1,5 +1,16 @@
 # Loads and saves dem text files
 import sys
+import re
+
+def cleanerrors(text):
+    orig = text
+    text = re.sub(r'[^a-gs.. ]|[a-g]{2,}', ' ', text)
+    text = re.sub(r'(?<=[a-g]s).', ' ', text)
+    text = re.sub(r'\bs*', ' ', text)
+    text = re.sub(r'[be]s', ' ', text)
+    if orig != text:
+        print("Your note file had errors. pyanosense tried fixing it, but the notes might not sound like what you intend.")
+    return text
 
 def edit_notes():
     info = """
@@ -13,6 +24,7 @@ def edit_notes():
 """
     print(info)
     text = sys.stdin.read()
+    text = cleanerrors(text)
     resp = input("Would you like to try again? ")
     if resp == 'y':
         return -1
