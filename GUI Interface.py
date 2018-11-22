@@ -3,10 +3,10 @@ from tkinter import font  as tkfont
 import noteplayer
 import trackGenerator
 import functools
+from sys import exit
 
 def noteEditCallback(name):
             trackGenerator.editTrack(name)
-
 
 class SampleApp(tk.Tk):
 
@@ -54,8 +54,11 @@ class StartPage(tk.Frame):
                             command=lambda: controller.show_frame("PageOne"))
         button2 = tk.Button(self, text="Notes Player",
                             command=lambda: controller.show_frame("PageTwo"))
+        button3 = tk.Button(self, text="Exit",
+                            command=lambda: exit())
         button1.pack()
         button2.pack()
+        button3.pack()
 
 
 class PageOne(tk.Frame):
